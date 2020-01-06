@@ -1,0 +1,73 @@
+<div>
+    <h1 class="cHead text-center">Top Stores</h1>
+    <div style="font-size: 1.2em !important;margin-top: 10px;">
+        <div class="alert alert-danger alert-dismissible fade show col-lg-8" *ngIf="responseError" role="alert">
+            {{responseError}}
+            <button type="button" class="close" (click)="closeError()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-2 col-xs-12" *ngFor="let store of storeArray | keyvalue"
+                [routerLink]="['/store', store.value._id]">
+                <img [src]="store.img">
+            </div>
+            <!-- <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <img src="../../assets/img/storesImg1.png">
+            </div> -->
+        </div>
+        <br>
+        <br>
+        <div class="container-fluid">
+            <p>When people think big and try to find the solutions to their problems arising where their needs stand,
+                that is the same place where new ways spring out. Online shopping is the best way these days which takes
+                care of the needs of the people in all possible ways. There are many stores around the world which tries
+                to bring the maximum comfort level to their customers. Australia is one of the regions where people are
+                getting the awareness and are trying their best to opt for all those trends which modern world
+                appreciates.
+                <br>
+                <br>
+                Super Saver Mama has partnered with all the top stores in Australia making the task of getting the top
+                notch products to the people from across the country and the world at this one platform. These popular
+                stores have been the source of bringing the ease and expediency to the customers through discounts &
+                deals. To us, quality is the best plan along with markdown.
+                <br>
+                <br>
+            </p>
+        </div>
+    </div>
+</div>

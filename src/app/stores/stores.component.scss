@@ -1,0 +1,26 @@
+.cHead{
+    font-size: 3.6em;
+}
+.row div{
+    border:11px solid white;
+    margin:10px 35px;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+}
+.row > div >img{
+    width: 100%;
+    border: 1px solid #04a2ca;
+}
+.row > div:hover{
+    border: 12px solid #04a2ca;
+}
+.container-fluid > p{
+  color: #333;
+  font-weight: lighter;
+  line-height: 1.8em;
+  margin:auto 70px
+}
+.col-md-2:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,157 @@
+<!-- <div id="mySidenav" class="sidenav">
+  <a class="closebtn" (click)="closeNav($event)">&times;</a>
+  <ul class="list-group">
+    <li class="list-group-item" routerLink="/home" (click)="closeNav($event)">Home</li>
+    <li class="list-group-item" routerLink="/stores" (click)="closeNav($event)">Stores</li>
+    <li class="list-group-item" routerLink="/categories" (click)="closeNav($event)">Categories</li>
+    <li class="list-group-item" routerLink="/blogs" (click)="closeNav($event)">Blogs</li>
+  </ul>
+</div> -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-nav static-top">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="" [routerLink]="['/top-stores']">Top winkels
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" [routerLink]="['/categories']">Categorieën</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Deel een kortingsbon</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" [routerLink]="['/blogs']">Blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<a class="navbar-brand" href="#">
+  <img src="../../assets/saverrrrr.png" alt="">
+</a>
+<div class="home-search">
+  <div class="container">
+    <h1 class="customHead text-center text-uppercase">
+      Korting met duizenden kortingscodes & aanbiedingen op SuperSaverMama.nl
+    </h1>
+    <div class="input-set">
+      <div class="col-md-8 col-xs-12 col-sm-12 mx-auto">
+        <div class="row">
+          <div class="search-bar-home searchjs col-xs-12 col-12">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-search"></i></span>
+              <input type="text" class="form-control search" placeholder="Bespaar op winkels, merken en categorieën">
+              <span class="input-group-btn secondBtn">
+                <button class="btn btn-lgg waves-effect waves-light" type="button">Zoeken</button>
+              </span> </div>
+            <div class="clearfix"></div>
+            <!-- <div id="resultContainer" class="resultContainer" style="display: none;">
+              <div id="searchResults" class="searchResults resultsearch"> </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <h2 class="customHead text-uppercase">Shop online met korting met 10.000+ acties in
+      december 2019
+      <br><b>Top</b> WINKELS</h2>
+    <div class="row justify-content-between">
+      <div class="cardd text-center">
+        <img src="../../assets/images/link1.png" alt="">
+      </div>
+      <div class="cardd text-center">
+        <img src="../../assets/images/link1.png" alt="">
+      </div>
+      <div class="cardd text-center">
+        <img src="../../assets/images/link1.png" alt="">
+      </div>
+      <div class="cardd text-center">
+        <img src="../../assets/images/link1.png" alt="">
+      </div>
+      <div class="cardd text-center">
+        <img src="../../assets/images/link1.png" alt="">
+      </div>
+      <div class="cardd text-center">
+        <img src="../../assets/images/link1.png" alt="">
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+</div>
+
+<div class="app-body" style="margin-top: 80px;">
+  <main class="main">
+    <div class="container-fluid rmHorizontalPadding">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
+
+<div class="bgGradient">
+  <h2 class="customHead text-center text-uppercase">BLIJF ALTIJD UP-TO-DATE MET DE SUPERSAVERMAMA.NL NIEUWSBRIEF</h2>
+  <h3 class="customHead2 text-center text-uppercase">Koop de trending deals van vandaag en Save Big</h3>
+  <br>
+  <div class="input-set">
+    <div class="col-md-8 col-xs-12 col-sm-12 mx-auto">
+      <div class="row">
+        <div class="search-bar-home searchjs col-xs-12 col-12">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control search" placeholder="Bespaar op winkels, merken en categorieën">
+            <span class="input-group-btn yBtn">
+              <button class="btn btn-lgg waves-effect waves-light" type="button">Zoeken</button>
+            </span> </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>
+<footer class="footer_area text-center">
+  <br>
+  <div class="col-md-7 col-sm-11 mx-auto">
+    <img src="../../assets/img/logo_foot.png">
+    <br>
+    <a href="" class="fLink">WAAR HET BESPAREN BEGINT!</a>
+    <br>
+    <br>
+    <p class="fPara">Super Saver Mama stelt alles in het werk om u de meest spaarzame deals, kortingscode en
+      aanbiedingen te bieden,
+      zodat u minder kunt uitgeven en meer kunt genieten. Dit is de ultieme bestemming voor alle extractors voor
+      kortingscodes. Bezoek ons voor uw dagelijkse online boodschappenritten of af en toe een winkeluitzending en blijf
+      licht op de zak terwijl u koopt wat u maar wilt. Super Saver Mama is hier om u te zegenen met kortingen en
+      besparingen die u verdient.</p>
+    <br>
+    <button type="button" class="btn btn-light btn-circle">
+      <i class="fa fa-facebook"></i>
+    </button>
+    <button type="button" class="btn btn-light btn-circle">
+      <i class="fa fa-twitter"></i>
+    </button>
+    <button type="button" class="btn btn-light btn-circle">
+      <i class="fa fa-google-plus"></i>
+    </button>
+    <button type="button" class="btn btn-light btn-circle">
+      <i class="fa fa-pinterest"></i>
+    </button>
+    <button type="button" class="btn btn-light btn-circle">
+      <i class="fa fa-youtube"></i>
+    </button>
+    <br>
+    <br>
+  </div>
+</footer>
+<div class="copy_right text-center">
+  © 2019 Alle rechten voorbehouden.
+</div>

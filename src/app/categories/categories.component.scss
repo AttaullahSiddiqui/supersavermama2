@@ -1,0 +1,17 @@
+.cHead{
+    font-size: 1.45em;
+    font-weight: lighter;
+}
+.bgGradient{
+    background: linear-gradient(to right, #3b4fa2 0%, #10b6d2 100%);
+    padding:auto 15px;
+    width: 100% !important;
+}
+.bgGradient > h2{
+    font-size: 1.6em;
+    color:white;
+    margin:60px auto;
+}
+.bgGradient:hover{
+    cursor: pointer;
+}
