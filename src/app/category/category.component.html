@@ -1,6 +1,8 @@
 <div>
     <h1 class="cHead text-center">{{selectedCat}}</h1>
-    <div class="lead" style="font-size: 1.2em !important;">
+    <br>
+    <br>
+    <div class="lead" style="font-size: 1.3em !important;">
         <div class="alert alert-danger alert-dismissible fade show col-lg-8" *ngIf="responseError" role="alert">
             {{responseError}}
             <button type="button" class="close" (click)="closeError()" aria-label="Close">
@@ -10,32 +12,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-lg-3">
-                    <form>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let cat of categoryArr | keyvalue"
+                            (click)="loadStores(cat.value._id)">{{cat.value.name}}</li>
+                    </ul>
+                    <!-- <form>
                         <select class="custom-select customSize" name="selctForm" [(ngModel)]="selectCat"
                             (change)="loadStores(selectCat)">
                             <option [value]="cat.value._id" *ngFor="let cat of categoryArr | keyvalue">
                                 {{cat.value.name}}
                             </option>
                         </select>
-                    </form>
+                    </form> -->
                     <br>
                     <br>
                 </div>
                 <div class="col">
                     <div class="row mb-0">
                         <div class="text-center m-5" *ngIf="!storeArr && isLoading">
-                            <div class="lds-facebook">
-                                <div></div>
-                                <div></div>
-                                <div></div>
+                            <div class="spinner-grow text-info m-5" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="sr-only">Loading...</span>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-2 storeArrr" [routerLink]="['/store', store.value._id]"
+                        <div class="col-sm-12 col-lg-3 storeArrr" [routerLink]="['/store', store.value._id]"
                             *ngFor="let store of storeArr | keyvalue">
                             <div class="brand-card">
                                 <div class="brand-card-header">
-                                    <img [src]="store.value.img" class="rounded-circle roundImg" width="55"
-                                        height="55" />
+                                    <img [src]="store.value.img" class="rounded-circle roundImg" width="100"
+                                        height="100" />
                                 </div>
                                 <div class="brand-card-body">
                                     <div class="text-muted small">

@@ -1,5 +1,6 @@
 <div>
     <h1 class="display-4 text-center">{{storeName}}</h1>
+    <br>
     <div class="lead" style="font-size: 1.2em !important;">
         <div class="alert alert-danger alert-dismissible fade show col-lg-8" *ngIf="responseError" role="alert">
             {{responseError}}
@@ -7,20 +8,18 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+        <div class="col-md-8 mx-auto">
+            <span [innerHTML]="storeDetail"></span>
+        </div>
         <br>
         <div class="container">
             <div class="text-center">
-                <button type="button" class="btn btn-outline-success lrgBtn" (click)="switch=false"
+                <button type="button" class="btn btn-outline-danger lrgBtn" (click)="switch=false"
                     [ngClass]="{'active': !switch}">Coupons</button>
-                <button type="button" class="btn btn-outline-success lrgBtn" (click)="switch=true"
+                <button type="button" class="btn btn-outline-danger lrgBtn" (click)="switch=true"
                     [ngClass]="{'active': switch}">Stores</button>
             </div>
-            <!-- <ul class="tranding_select tabs" style="background:transparent">
-                <li class="tab"><a class="waves-effect btn" (click)="switch=false"
-                        [ngClass]="{'active': !switch}">Coupons</a></li>
-                <li class="tab"><a class="waves-effect btn" (click)="switch=true" [ngClass]="{'active': switch}">Related
-                        Stores</a></li>
-            </ul> -->
+            <br>
             <br>
             <div class="text-center m-5" *ngIf="!couponsArray && isBusy">
                 <div class="lds-facebook">
@@ -33,114 +32,51 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Active Coupons</h5>
+                            <h5 class="card-title" *ngIf="couponsArray">Active Coupons</h5>
 
                             <ul class="list-group list-group-flush card-text">
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img src="../../assets/img/post-2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                            ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                            lacinia congue felis in faucibus.
+                                <div *ngFor="let coupon of couponsArray | keyvalue">
+                                    <li class="list-group-item" *ngIf="coupon.value.expDate > currentDate">
+                                        <div class="media">
+                                            <img [src]="storePic" class="mr-3 rounded-circle">
+                                            <div class="media-body">
+                                                <h5 class="mt-0">{{coupon.value.offerBox}}
+                                                </h5>
+                                                <h6 class="text-muted pull-left"><b>Expiry Date: </b>&nbsp;
+                                                    <span>{{coupon.value.expDate | date}}</span></h6>
+                                                <button type="button" class="btn btn-outline-success pull-right"
+                                                    (click)="openModal2(template2,coupon.value)"
+                                                    *ngIf="!coupon.value.activeStatus">Copy
+                                                    Code & Visit Merchant</button>
+                                                <button type="button" class="btn btn-outline-success pull-right"
+                                                    (click)="openModal(template,coupon.value)"
+                                                    *ngIf="coupon.value.activeStatus">Get Offer</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img src="../../assets/img/post-2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                            ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                            lacinia congue felis in faucibus.
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img src="../../assets/img/post-2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                            ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                            lacinia congue felis in faucibus.
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img src="../../assets/img/post-2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                            ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                            lacinia congue felis in faucibus.
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                </div>
                             </ul>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Expired Coupons</h5>
+                            <h5 class="card-title" *ngIf="couponsArray">Expired Coupons</h5>
 
                             <ul class="list-group list-group-flush card-text expNode">
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img src="../../assets/img/post-2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                            ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                            lacinia congue felis in faucibus.
+                                <div *ngFor="let coupon of couponsArray | keyvalue">
+                                    <li class="list-group-item" *ngIf="currentDate > coupon.value.expDate">
+                                        <div class="media">
+                                            <img [src]="storePic" class="mr-3 rounded-circle">
+                                            <div class="media-body">
+                                                <h5 class="mt-0">{{coupon.value.offerBox}}
+                                                </h5>
+                                                <h6 class="text-muted"><b>Expiry Date: </b>&nbsp;
+                                                    <span>{{coupon.value.expDate | date}}</span></h6>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img src="../../assets/img/post-2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                            ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                            lacinia congue felis in faucibus.
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img src="../../assets/img/post-2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                            ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                            lacinia congue felis in faucibus.
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img src="../../assets/img/post-2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                            ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                            lacinia congue felis in faucibus.
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                </div>
                             </ul>
                         </div>
                     </div>
@@ -192,10 +128,10 @@
                         </div>
                     </section> -->
                 </div>
-                <div class="col-sm-12 col-lg-3">
+                <div class="col-sm-12 col-lg-3 text-center">
                     <h4>About this Store</h4>
                     <br>
-                    <span [innerHTML]="storeDetail"></span>
+                    <span [innerHTML]="longDes"></span>
                 </div>
             </div>
             <div class="row" *ngIf="switch">
@@ -209,7 +145,7 @@
                                             height="100" />
                                     </div>
                                     <div class="brand-card-body">
-                                        <div class="text-muted small">{{store.value.name}}</div>
+                                        <div class="text-muted">{{store.value.name}}</div>
                                     </div>
                                 </div>
                             </div>

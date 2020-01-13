@@ -16,6 +16,7 @@ export class MenuComponent implements AfterViewInit {
   mouseLoc = false;
   noResult = false;
   storeArray = null;
+  storeArr = null;
   blogArray = null;
   searchBox = null;
   constructor(private _dataService: DataService, private router: Router, @Inject(DOCUMENT) _document?: any) {
@@ -30,10 +31,14 @@ export class MenuComponent implements AfterViewInit {
   }
   ngOnDestroy(): void { this.changes.disconnect() }
   ngAfterViewInit() {
-    this._dataService.fetchOnlyLimit("/userDisplay/fetchTopBlogs", 4).subscribe(res => {
-      if (res.data) this.blogArray = res.data;
+    // this._dataService.fetchOnlyLimit("/userDisplay/fetchTopBlogs", 4).subscribe(res => {
+    //   if (res.data) this.blogArray = res.data;
+    //   else console.log(res.message)
+    // });
+    this._dataService.fetchOnlyLimit("/userDisplay/fetchTopStores", 6).subscribe(res => {
+      if (res.data) this.storeArr = res.data;
       else console.log(res.message)
-    });
+    })
   }
   searchFunc(queri) {
     if (!queri) return;

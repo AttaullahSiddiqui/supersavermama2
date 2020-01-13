@@ -164,6 +164,9 @@
   background: white;
   // margin: 0 10px;
 }
+.cardd:hover{
+  cursor: pointer;
+}
 .footer_area{
   background-color: #EEEEEE;
 }
@@ -202,4 +205,14 @@
 }
 .yBtn{
   background-color: #FEDB3F !important;
+}
+table{
+  border: none;
+  font-size: 1.2em;
+}
+tr:hover{
+  cursor: pointer;
+}
+.avatar img{
+  height: 100% !important;
 }

@@ -14,13 +14,15 @@ export class HomeComponent implements OnInit {
     '../../assets/img/post-2.jpg',
     '../../assets/img/post-3.jpg'];
   SlideOptions = {
-    items: 3, dots: true, navigation: true,
+    items: 3,
+    stagePadding: 170,
+    loop: true,
+    nav: true,
+    dots: false,
+    margin: 30,
+    merge: true,
     navText: ["<i class='fa fa-caret-left cYel'></i><i class='fa fa-angle-left'></i>",
       "<i class='fa fa-angle-right'></i><i class='fa fa-caret-right cYel'></i>"],
-    loop: true,
-    stagePadding: 170,
-    margin: 30,
-    merge: true
   };
   CarouselOptions = { items: 3, dots: true, nav: true };
   codeCopied = false;
@@ -29,7 +31,28 @@ export class HomeComponent implements OnInit {
   slideArray: [] = null;
   storeArray: [] = null;
   blogArray: [] = null;
-  dealsArray: [] = null;
+  dealsArray = [{
+    offerBox: "Hahahha",
+    activeStatus: true
+  }, {
+    offerBox: "Hahahha",
+    activeStatus: true
+  }, {
+    offerBox: "Hahahha",
+    activeStatus: true
+  }, {
+    offerBox: "Hahahha",
+    activeStatus: true
+  }, {
+    offerBox: "Hahahha",
+    activeStatus: true
+  }, {
+    offerBox: "Hahahha",
+    activeStatus: true
+  }, {
+    offerBox: "Hahahha",
+    activeStatus: true
+  }];
   hiddenInput = null;
   constructor(private _dataService: DataService, private modalService: BsModalService) { }
 
@@ -41,7 +64,7 @@ export class HomeComponent implements OnInit {
       nav: true,
       dots: false,
       margin: 30,
-      merge: true,
+      // merge: true,
       navText: ["<i class='fa fa-caret-left cYel'></i><i class='fa fa-angle-left'></i>",
         "<i class='fa fa-angle-right'></i><i class='fa fa-caret-right cYel'></i>"],
       responsive: {
@@ -68,8 +91,8 @@ export class HomeComponent implements OnInit {
           items: 3,
           stagePadding: 170,
           margin: 30,
-          merge: true,
-          mergeFit: true,
+          // merge: true,
+          mergeFit: false,
           singleItem: false,
           loop: true,
           nav: true
@@ -92,10 +115,14 @@ export class HomeComponent implements OnInit {
     //   if (res.data) this.blogArray = res.data;
     //   else this.errorHandler(res.message)
     // })
-    // this._dataService.fetchOnlyLimit("/userDisplay/fetchTopDeals", 7).subscribe(res => {
-    //   if (res.data) this.dealsArray = res.data;
-    //   else this.errorHandler(res.message)
-    // })
+    // $("abcd").append("<h1>Hahahhah</h1>");
+    this._dataService.fetchOnlyLimit("/userDisplay/fetchTopDeals", 7).subscribe(res => {
+      if (res.data) {
+        this.dealsArray = res.data;
+        console.log(this.dealsArray);
+      }
+      else this.errorHandler(res.message)
+    })
   }
   openModal(template: TemplateRef<any>, couponNode) {
     this.editObj = { ...couponNode };

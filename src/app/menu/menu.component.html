@@ -46,7 +46,9 @@
           <div class="search-bar-home searchjs col-xs-12 col-12">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-search"></i></span>
-              <input type="text" class="form-control search" placeholder="Bespaar op winkels, merken en categorieën">
+              <input type="text" class="form-control search" placeholder="Bespaar op winkels, merken en categorieën"
+                (input)="searchFunc(searchBox)" (focus)="switch=true" (focusout)="focusOutFunc()"
+                [(ngModel)]="searchBox">
               <span class="input-group-btn secondBtn">
                 <button class="btn btn-lgg waves-effect waves-light" type="button">Zoeken</button>
               </span> </div>
@@ -56,6 +58,39 @@
             </div> -->
           </div>
         </div>
+        <div class="col" style="width:90%;position: absolute;margin-top: 10px;background:white"
+          *ngIf="searchBox && switch">
+          <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <tbody>
+              <tr>
+                <div class="text-center" *ngIf="!storeArray && !noResult">
+                  <div class="spinner-grow text-info m-5" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <div class="text-center" *ngIf="noResult">
+                  <br>
+                  No result found for "{{searchBox}}"
+                  <br>
+                  <br>
+                </div>
+              </tr>
+              <tr *ngFor="let store of storeArray | keyvalue">
+                <td class="text-center" [routerLink]="['/store', store.value._id]">
+                  <div class="avatar">
+                    <img [src]="store.value.img" class="rounded-circle">
+                  </div>
+                </td>
+                <td [routerLink]="['/store', store.value._id]">
+                  <div>{{store.value.name}}</div>
+                  <div class="small text-muted">
+                    <span>Store</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <div class="clearfix"></div>
@@ -63,31 +98,15 @@
       december 2019
       <br><b>Top</b> WINKELS</h2>
     <div class="row justify-content-between">
-      <div class="cardd text-center">
-        <img src="../../assets/images/link1.png" alt="">
-      </div>
-      <div class="cardd text-center">
-        <img src="../../assets/images/link1.png" alt="">
-      </div>
-      <div class="cardd text-center">
-        <img src="../../assets/images/link1.png" alt="">
-      </div>
-      <div class="cardd text-center">
-        <img src="../../assets/images/link1.png" alt="">
-      </div>
-      <div class="cardd text-center">
-        <img src="../../assets/images/link1.png" alt="">
-      </div>
-      <div class="cardd text-center">
-        <img src="../../assets/images/link1.png" alt="">
+      <div class="cardd text-center" *ngFor="let store of storeArr | keyvalue"
+        [routerLink]="['/store', store.value._id]">
+        <img [src]="store.value.img" alt="">
       </div>
     </div>
-    <br>
-    <br>
   </div>
 </div>
 
-<div class="app-body" style="margin-top: 80px;">
+<div class="app-body" style="margin-top: 20px;">
   <main class="main">
     <div class="container-fluid rmHorizontalPadding">
       <router-outlet></router-outlet>

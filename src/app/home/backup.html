@@ -9,15 +9,15 @@
     <br>
     <br>
     <br> -->
-    <!-- <owl-carousel [options]="SlideOptions" [carouselClasses]="['owl-theme','row', 'sliding']">
-        <div class="item" *ngFor="let deal of dealsArray">
+    <!-- <owl-carousel [options]="SlideOptions" [items]="images" [carouselClasses]="['owl-theme','row', 'sliding']">
+        <div class="item" *ngFor="let img of Images">
             <div class="card">
                 <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Deal Box</h5>
-                    <p class="card-text">{{deal.value.offerBox}}</p>
-                    <a href="" class="btn btn-block btn-lg" (click)="openModal(template,deal.value)">GET DEAL</a>
-                    <a href="" class="btn btn-block btn-lg" (click)="openModal2(template2,deal.value)">COPY CODE </a>
+                    <h5 class="card-title">20% Off</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
                 </div>
             </div>
         </div>
@@ -26,94 +26,47 @@
     <br>
     <br> -->
     <div class="owl-carousel owl-theme text-center firstOwl">
-        <div class="item" data-merege="1">
+        <div class="item" data-merge="1">
             <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Deal Box</h5>
-                    <p class="card-text">{{dealsArray[0].offerBox}}</p>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[0].activeStatus"
-                        (click)="openModal(template,deal.value)">GET DEAL</a>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[0].activeStatus"
-                        (click)="openModal2(template2,deal.value)">COPY CODE </a>
+                    <h5 class="card-title">20% Off</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
                 </div>
             </div>
         </div>
-        <div class="item" data-merege="1">
+        <div class="item" data-merge="1">
             <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Deal Box</h5>
-                    <p class="card-text">{{dealsArray[1].offerBox}}</p>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[1].activeStatus"
-                        (click)="openModal(template,deal.value)">GET DEAL</a>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[1].activeStatus"
-                        (click)="openModal2(template2,deal.value)">COPY CODE </a>
+                    <h5 class="card-title">40% Off</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
                 </div>
             </div>
         </div>
-        <div class="item" data-merege="1">
+        <div class="item" data-merge="1">
             <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Deal Box</h5>
-                    <p class="card-text">{{dealsArray[2].offerBox}}</p>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[2].activeStatus"
-                        (click)="openModal(template,deal.value)">GET DEAL</a>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[2].activeStatus"
-                        (click)="openModal2(template2,deal.value)">COPY CODE </a>
+                    <h5 class="card-title">60% Off</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
                 </div>
             </div>
         </div>
-        <div class="item" data-merege="1">
+        <div class="item" data-merge="1">
             <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Deal Box</h5>
-                    <p class="card-text">{{dealsArray[3].offerBox}}</p>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[3].activeStatus"
-                        (click)="openModal(template,deal.value)">GET DEAL</a>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[3].activeStatus"
-                        (click)="openModal2(template2,deal.value)">COPY CODE </a>
-                </div>
-            </div>
-        </div>
-        <div class="item" data-merege="1">
-            <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Deal Box</h5>
-                    <p class="card-text">{{dealsArray[4].offerBox}}</p>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[4].activeStatus"
-                        (click)="openModal(template,deal.value)">GET DEAL</a>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[4].activeStatus"
-                        (click)="openModal2(template2,deal.value)">COPY CODE </a>
-                </div>
-            </div>
-        </div>
-        <div class="item" data-merege="1">
-            <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Deal Box</h5>
-                    <p class="card-text">{{dealsArray[5].offerBox}}</p>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[5].activeStatus"
-                        (click)="openModal(template,deal.value)">GET DEAL</a>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[5].activeStatus"
-                        (click)="openModal2(template2,deal.value)">COPY CODE </a>
-                </div>
-            </div>
-        </div>
-        <div class="item" data-merege="1">
-            <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Deal Box</h5>
-                    <p class="card-text">{{dealsArray[6].offerBox}}</p>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[6].activeStatus"
-                        (click)="openModal(template,deal.value)">GET DEAL</a>
-                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[6].activeStatus"
-                        (click)="openModal2(template2,deal.value)">COPY CODE </a>
+                    <h5 class="card-title">80% Off</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
                 </div>
             </div>
         </div>
