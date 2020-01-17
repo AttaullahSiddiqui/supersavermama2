@@ -9,15 +9,15 @@
     <br>
     <br>
     <br> -->
-    <!-- <owl-carousel [options]="SlideOptions" [items]="images" [carouselClasses]="['owl-theme','row', 'sliding']">
-        <div class="item" *ngFor="let img of Images">
+    <!-- <owl-carousel [options]="SlideOptions" [carouselClasses]="['owl-theme','row', 'sliding']">
+        <div class="item" *ngFor="let deal of dealsArray">
             <div class="card">
                 <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">20% Off</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{deal.value.offerBox}}</p>
+                    <a href="" class="btn btn-block btn-lg" (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" (click)="openModal2(template2,deal.value)">COPY CODE </a>
                 </div>
             </div>
         </div>
@@ -25,48 +25,181 @@
     <br>
     <br>
     <br> -->
-    <div class="owl-carousel owl-theme text-center firstOwl">
-        <div class="item" data-merge="1">
+    <div id="phatig" class="owl-carousel owl-theme text-center firstOwl">
+        <!-- <div class="item remv" data-merege="1">
             <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">20% Off</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">ABC</p>
+                    <a href="" class="btn btn-block btn-lg" (click)="openModal(template)">Deal krijgen</a>
                 </div>
             </div>
         </div>
-        <div class="item" data-merge="1">
+        <div class="item remv" data-merege="1">
             <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">40% Off</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">ABC</p>
+                    <a href="" class="btn btn-block btn-lg" (click)="openModal(template)">Deal krijgen</a>
                 </div>
             </div>
         </div>
-        <div class="item" data-merge="1">
+        <div class="item remv" data-merege="1">
             <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">60% Off</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">ABC</p>
+                    <a href="" class="btn btn-block btn-lg" (click)="openModal(template)">Deal krijgen</a>
                 </div>
             </div>
         </div>
-        <div class="item" data-merge="1">
+        <div class="item remv" data-merege="1">
             <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">80% Off</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-block btn-lg">GET DEAL</a>
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">ABC</p>
+                    <a href="" class="btn btn-block btn-lg" (click)="openModal(template)">Deal krijgen</a>
+                </div>
+            </div>
+        </div>
+        <div class="item remv" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">ABC</p>
+                    <a href="" class="btn btn-block btn-lg" (click)="openModal(template)">Deal krijgen</a>
+                </div>
+            </div>
+        </div>
+        <div class="item remv" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">ABC</p>
+                    <a href="" class="btn btn-block btn-lg" (click)="openModal(template)">Deal krijgen</a>
+                </div>
+            </div>
+        </div> -->
+        <div class="item" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{dealsArray[0].offerBox | slice:0:35}}</p>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[0].activeStatus"
+                        (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[0].activeStatus"
+                        (click)="openModal2(template2,deal.value)">CODE KOPIËREN</a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{dealsArray[1].offerBox | slice:0:35}}</p>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[1].activeStatus"
+                        (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[1].activeStatus"
+                        (click)="openModal2(template2,deal.value)">CODE KOPIËREN</a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{dealsArray[2].offerBox | slice:0:35}}</p>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[2].activeStatus"
+                        (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[2].activeStatus"
+                        (click)="openModal2(template2,deal.value)">CODE KOPIËREN</a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{dealsArray[3].offerBox | slice:0:35}}</p>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[3].activeStatus"
+                        (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[3].activeStatus"
+                        (click)="openModal2(template2,deal.value)">CODE KOPIËREN</a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{dealsArray[4].offerBox | slice:0:35}}</p>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[4].activeStatus"
+                        (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[4].activeStatus"
+                        (click)="openModal2(template2,deal.value)">CODE KOPIËREN</a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{dealsArray[5].offerBox | slice:0:35}}</p>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[5].activeStatus"
+                        (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[5].activeStatus"
+                        (click)="openModal2(template2,deal.value)">CODE KOPIËREN</a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{dealsArray[6].offerBox | slice:0:35}}</p>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[6].activeStatus"
+                        (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[6].activeStatus"
+                        (click)="openModal2(template2,deal.value)">CODE KOPIËREN</a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{dealsArray[0].offerBox | slice:0:35}}</p>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[0].activeStatus"
+                        (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[0].activeStatus"
+                        (click)="openModal2(template2,deal.value)">CODE KOPIËREN</a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merege="1">
+            <div class="card">
+                <img src="../../assets/img/post.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Deal Box</h5>
+                    <p class="card-text">{{dealsArray[1].offerBox | slice:0:35}}</p>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="dealsArray[1].activeStatus"
+                        (click)="openModal(template,deal.value)">Deal krijgen</a>
+                    <a href="" class="btn btn-block btn-lg" *ngIf="!dealsArray[1].activeStatus"
+                        (click)="openModal2(template2,deal.value)">CODE KOPIËREN</a>
                 </div>
             </div>
         </div>
@@ -80,39 +213,114 @@
 <br>
 <div class="container-fluid text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
     <h3>TOP AANBIEDINGEN</h3>
-    <div class="owl-carousel owl-theme text-center scndOwl">
+    <div id="phatig2" class="owl-carousel owl-theme text-center scndOwl">
         <div class="item" data-merge="1">
+            <div class="card">
+                <img [src]="blogArray[0].img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Blog</h5>
+                    <p class="card-text">{{blogArray[0].title | slice:0:30}}</p>
+                    <a href="" class="btn btn-block btn-lg pull-left" [routerLink]="['/blog', blogArray[0]._id]">bezoek
+                        blog </a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merge="1">
+            <div class="card">
+                <img [src]="blogArray[1].img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Blog</h5>
+                    <p class="card-text">{{blogArray[1].title | slice:0:30}}</p>
+                    <a href="" class="btn btn-block btn-lg pull-left" [routerLink]="['/blog', blogArray[1]._id]">bezoek
+                        blog </a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merge="1">
+            <div class="card">
+                <img [src]="blogArray[2].img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Blog</h5>
+                    <p class="card-text">{{blogArray[2].title | slice:0:30}}</p>
+                    <a href="" class="btn btn-block btn-lg pull-left" [routerLink]="['/blog', blogArray[2]._id]">bezoek
+                        blog </a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merge="1">
+            <div class="card">
+                <img [src]="blogArray[3].img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Blog</h5>
+                    <p class="card-text">{{blogArray[3].title | slice:0:30}}</p>
+                    <a href="" class="btn btn-block btn-lg pull-left" [routerLink]="['/blog', blogArray[3]._id]">bezoek
+                        blog </a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merge="1">
+            <div class="card">
+                <img [src]="blogArray[4].img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Blog</h5>
+                    <p class="card-text">{{blogArray[4].title | slice:0:30}}</p>
+                    <a href="" class="btn btn-block btn-lg pull-left" [routerLink]="['/blog', blogArray[4]._id]">bezoek
+                        blog </a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merge="1">
+            <div class="card">
+                <img [src]="blogArray[5].img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Blog</h5>
+                    <p class="card-text">{{blogArray[5].title | slice:0:30}}</p>
+                    <a href="" class="btn btn-block btn-lg pull-left" [routerLink]="['/blog', blogArray[5]._id]">bezoek
+                        blog </a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merge="1">
+            <div class="card">
+                <img [src]="blogArray[6].img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Blog</h5>
+                    <p class="card-text">{{blogArray[0].title | slice:0:30}}</p>
+                    <a href="" class="btn btn-block btn-lg pull-left" [routerLink]="['/blog', blogArray[6]._id]">bezoek
+                        blog </a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merge="1">
+            <div class="card">
+                <img [src]="blogArray[0].img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Blog</h5>
+                    <p class="card-text">{{blogArray[0].title | slice:0:30}}</p>
+                    <a href="" class="btn btn-block btn-lg pull-left" [routerLink]="['/blog', blogArray[0]._id]">bezoek
+                        blog </a>
+                </div>
+            </div>
+        </div>
+        <div class="item" data-merge="1">
+            <div class="card">
+                <img [src]="blogArray[1].img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Blog</h5>
+                    <p class="card-text">{{blogArray[1].title | slice:0:30}}</p>
+                    <a href="" class="btn btn-block btn-lg pull-left" [routerLink]="['/blog', blogArray[1]._id]">bezoek
+                        blog </a>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="item" data-merge="1">
             <div class="card">
                 <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <a href="" class="btn btn-block btn-lg pull-left">Elektronica</a>
                 </div>
             </div>
-        </div>
-        <div class="item" data-merge="1">
-            <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <a href="" class="btn btn-block btn-lg pull-left">Elektronica</a>
-                </div>
-            </div>
-        </div>
-        <div class="item" data-merge="1">
-            <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <a href="" class="btn btn-block btn-lg pull-left">Elektronica</a>
-                </div>
-            </div>
-        </div>
-        <div class="item" data-merge="1">
-            <div class="card">
-                <img src="../../assets/img/post.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <a href="" class="btn btn-block btn-lg pull-left">Elektronica</a>
-                </div>
-            </div>
-        </div>
+        </div> -->
     </div>
 </div>
 
@@ -128,7 +336,7 @@
                     <div class="text-uppercase text-muted small">friends</div>
                 </div>
                 <div>
-                    <div class="text-value">459</div>
+                    <div class="text-value">359</div>
                     <div class="text-uppercase text-muted small">feeds</div>
                 </div>
             </div>
@@ -145,7 +353,7 @@
                     <div class="text-uppercase text-muted small">friends</div>
                 </div>
                 <div>
-                    <div class="text-value">459</div>
+                    <div class="text-value">359</div>
                     <div class="text-uppercase text-muted small">feeds</div>
                 </div>
             </div>
@@ -162,7 +370,7 @@
                     <div class="text-uppercase text-muted small">friends</div>
                 </div>
                 <div>
-                    <div class="text-value">459</div>
+                    <div class="text-value">359</div>
                     <div class="text-uppercase text-muted small">feeds</div>
                 </div>
             </div>
@@ -179,7 +387,7 @@
                     <div class="text-uppercase text-muted small">friends</div>
                 </div>
                 <div>
-                    <div class="text-value">459</div>
+                    <div class="text-value">359</div>
                     <div class="text-uppercase text-muted small">feeds</div>
                 </div>
             </div>
@@ -187,49 +395,105 @@
     </div>
 </div>
 <div class="container-fluid">
+    <h2>TOP BOVENKATEN</h2>
+    <div class="text-center" *ngIf="!storeNames">
+        <div class="spinner-grow text-info m-5" style="width: 5rem; height: 5rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
     <div class="row">
-        <h2>TOP BOVENKATEN</h2>
-        <div class="row">
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
-            <div class="col-md-3 col-xs-12 p_content">
-                <a href="">KFHIJLKFHBWS</a>
-            </div>
+        <div class="col-md-3 col-xs-12 p_content" *ngFor="let sName of storeNames | keyvalue"
+            [routerLink]="['/store', sName.value._id]">
+            <a href="">{{sName.value.name}}</a>
         </div>
     </div>
 </div>
 <br>
+<br>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Coupon: <span>{{editObj.offerBox}}</span></h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+        <span style="font-size: 1.5em;">No code required</span><br><br>
+        <button type="button" class="btn btn-success" (click)="window.open(editObj.trackingLink)">
+            Shop Now
+        </button>
+        <br>
+        <br>
+        <span>*No code required. Just click the above button to avail this deal</span>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    </div>
+</ng-template>
+<ng-template #template2>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Coupon: <span>{{editObj.offerBox}}</span></h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+        <span style="font-size: 1.5em;">Here is the code</span><br><br>
+        <div class="template2">
+            {{editObj.code}}
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="copyClipboardFunc()">
+            <span *ngIf="!codeCopied">Copy code & Visit Store</span>
+            <span *ngIf="codeCopied">Code Copied</span>
+        </button>
+        <br>
+        <br>
+        <span>Copy this code and paste it at checkout</span>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    </div>
+</ng-template>
+<input id='copyfrom' [(ngModel)]="hiddenInput" tabindex='-1' aria-hidden='true'>
+
+<script>
+    // $('.remv').remove();
+        // $owl.trigger('refresh.owl.carousel');
+        // (<HTMLElement>document.getElementsByClassName('remv')[i]).classList.remove('open');
+               // (<HTMLElement>document.getElementsByClassName('owl-nav')[0]).classList.add('row justify-content-between');
+
+
+                // setTimeout(function () {
+    //   (<HTMLElement>document.getElementsByClassName('owl-nav')[0]).classList.remove('disabled');
+    // }, 2000)
+    // this._dataService.fetchAPI("/userDisplay/fetchSlides").subscribe(res => {
+    //   if (res.data) this.slideArray = res.data;
+    //   else this.errorHandler(res.message)
+    // })
+    // this._dataService.fetchOnlyLimit("/userDisplay/fetchTopStores", 10).subscribe(res => {
+    //   if (res.data) this.storeArray = res.data;
+    //   else this.errorHandler(res.message)
+    // })
+
+
+    // let myContainer = document.getElementById('phatig') as HTMLInputElement;
+
+
+    // Images = ['../../assets/img/post.jpg',
+  //   '../../assets/img/post-2.jpg',
+  //   '../../assets/img/post-3.jpg'];
+  // SlideOptions = {
+  //   items: 3,
+  //   stagePadding: 170,
+  //   loop: true,
+  //   nav: true,
+  //   dots: false,
+  //   margin: 30,
+  //   merge: true,
+  //   navText: ["<i class='fa fa-caret-left cYel'></i><i class='fa fa-angle-left'></i>",
+  //     "<i class='fa fa-angle-right'></i><i class='fa fa-caret-right cYel'></i>"],
+  // };
+  // CarouselOptions = { items: 3, dots: true, nav: true };
+</script>

@@ -16,9 +16,11 @@ export class MenuComponent implements AfterViewInit {
   mouseLoc = false;
   noResult = false;
   storeArray = null;
+  hero = {};
   storeArr = null;
   blogArray = null;
   searchBox = null;
+  subscribeNode = false;
   constructor(private _dataService: DataService, private router: Router, @Inject(DOCUMENT) _document?: any) {
     this.changes = new MutationObserver((mutations) => {
       this.sidebarMinimized = _document.body.classList.contains('sidebar-minimized');
@@ -48,6 +50,23 @@ export class MenuComponent implements AfterViewInit {
       if (res.data) this.storeArray = res.data;
       else this.noResult = true;
     })
+  }
+  subscribeMe(userEmail) {
+    if (this.subscribeNode) return;
+    this.subscribeNode = true;
+    this._dataService.postAPI("/userDisplay/subscribeMe", { email: userEmail }).subscribe(res => {
+      if (res.data) {
+        this.subscribeNode = false;
+        alert("Je hebt je succesvol ingeschreven");
+        this.hero = {}
+      }
+      else {
+        this.subscribeNode = false;
+        if (res.message == "Duplicate") alert("Deze e - mail is al ingeschreven")
+        else console.log(res.message)
+      }
+    })
+
   }
   focusOutFunc() {
     setTimeout(() => {

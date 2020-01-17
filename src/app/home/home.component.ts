@@ -10,47 +10,61 @@ declare let $: any;
 })
 export class HomeComponent implements OnInit {
   modalRef: BsModalRef;
-  Images = ['../../assets/img/post.jpg',
-    '../../assets/img/post-2.jpg',
-    '../../assets/img/post-3.jpg'];
-  SlideOptions = {
-    items: 3,
-    stagePadding: 170,
-    loop: true,
-    nav: true,
-    dots: false,
-    margin: 30,
-    merge: true,
-    navText: ["<i class='fa fa-caret-left cYel'></i><i class='fa fa-angle-left'></i>",
-      "<i class='fa fa-angle-right'></i><i class='fa fa-caret-right cYel'></i>"],
-  };
-  CarouselOptions = { items: 3, dots: true, nav: true };
   codeCopied = false;
   editObj;
   responseError = "";
   slideArray: [] = null;
   storeArray: [] = null;
-  blogArray: [] = null;
+  storeNames: [] = null;
+  blogArray = [{
+    title: "Loading...",
+    img: "../../assets/img/post.jpg",
+    _id: ""
+  }, {
+    title: "Loading...",
+    img: "../../assets/img/post-2.jpg",
+    _id: ""
+  }, {
+    title: "Loading...",
+    img: "../../assets/img/post-3.jpg",
+    _id: ""
+  }, {
+    title: "Loading...",
+    img: "../../assets/img/post-4.jpg",
+    _id: ""
+  }, {
+    title: "Loading...",
+    img: "../../assets/img/post.jpg",
+    _id: ""
+  }, {
+    title: "Loading...",
+    img: "../../assets/img/post-3.jpg",
+    _id: ""
+  }, {
+    title: "Loading...",
+    img: "../../assets/img/post-4.jpg",
+    _id: ""
+  }];
   dealsArray = [{
-    offerBox: "Hahahha",
+    offerBox: "Loading...",
     activeStatus: true
   }, {
-    offerBox: "Hahahha",
+    offerBox: "Loading...",
     activeStatus: true
   }, {
-    offerBox: "Hahahha",
+    offerBox: "Loading...",
     activeStatus: true
   }, {
-    offerBox: "Hahahha",
+    offerBox: "Loading...",
     activeStatus: true
   }, {
-    offerBox: "Hahahha",
+    offerBox: "Loading...",
     activeStatus: true
   }, {
-    offerBox: "Hahahha",
+    offerBox: "Loading...",
     activeStatus: true
   }, {
-    offerBox: "Hahahha",
+    offerBox: "Loading...",
     activeStatus: true
   }];
   hiddenInput = null;
@@ -61,10 +75,10 @@ export class HomeComponent implements OnInit {
       items: 3,
       stagePadding: 170,
       loop: true,
+      responsiveBaseElement: '#phatig',
       nav: true,
       dots: false,
       margin: 30,
-      // merge: true,
       navText: ["<i class='fa fa-caret-left cYel'></i><i class='fa fa-angle-left'></i>",
         "<i class='fa fa-angle-right'></i><i class='fa fa-caret-right cYel'></i>"],
       responsive: {
@@ -90,46 +104,50 @@ export class HomeComponent implements OnInit {
         1000: {
           items: 3,
           stagePadding: 170,
-          margin: 30,
-          // merge: true,
-          mergeFit: false,
+          margin: 0,
+          merge: false,
           singleItem: false,
           loop: true,
           nav: true
         }
       }
     });
-    // (<HTMLElement>document.getElementsByClassName('owl-nav')[0]).classList.add('row justify-content-between');
-    // setTimeout(function () {
-    //   (<HTMLElement>document.getElementsByClassName('owl-nav')[0]).classList.remove('disabled');
-    // }, 2000)
-    // this._dataService.fetchAPI("/userDisplay/fetchSlides").subscribe(res => {
-    //   if (res.data) this.slideArray = res.data;
-    //   else this.errorHandler(res.message)
-    // })
-    // this._dataService.fetchOnlyLimit("/userDisplay/fetchTopStores", 10).subscribe(res => {
-    //   if (res.data) this.storeArray = res.data;
-    //   else this.errorHandler(res.message)
-    // })
-    // this._dataService.fetchOnlyLimit("/userDisplay/fetchTopBlogs", 5).subscribe(res => {
-    //   if (res.data) this.blogArray = res.data;
-    //   else this.errorHandler(res.message)
-    // })
-    // $("abcd").append("<h1>Hahahhah</h1>");
-    this._dataService.fetchOnlyLimit("/userDisplay/fetchTopDeals", 7).subscribe(res => {
+    this._dataService.fetchOnlyLimit("/userDisplay/fetchTopBlogs", 7).subscribe(res => {
       if (res.data) {
-        this.dealsArray = res.data;
-        console.log(this.dealsArray);
+        this.blogArray = res.data;
+        if (window.innerWidth > 1000) {
+          for (var i = 0; i < 5; i++) {
+            $("#phatig2").trigger('remove.owl.carousel', [i]).trigger('refresh.owl.carousel');
+          }
+        }
       }
       else this.errorHandler(res.message)
     })
+    this._dataService.fetchOnlyLimit("/userDisplay/fetchTopDeals", 7).subscribe(res => {
+      if (res.data) {
+        this.dealsArray = res.data;
+        console.log(this.dealsArray)
+        if (window.innerWidth > 1000) {
+          for (var i = 0; i < 5; i++) {
+            $("#phatig").trigger('remove.owl.carousel', [i]).trigger('refresh.owl.carousel');
+          }
+        }
+      }
+      else this.errorHandler(res.message)
+    })
+    this._dataService.fetchOnlyLimit("/userDisplay/fetchTopStoresName", 12).subscribe(res => {
+      if (res.data) this.storeNames = res.data;
+      else console.log(res.message)
+    })
   }
   openModal(template: TemplateRef<any>, couponNode) {
+    if (!couponNode.storeId) return;
     this.editObj = { ...couponNode };
     window.open(this.editObj.trackingLink, '_blank');
     this.modalRef = this.modalService.show(template);
   }
   openModal2(template: TemplateRef<any>, couponNode) {
+    if (!couponNode.storeId) return;
     this.codeCopied = false;
     this.editObj = { ...couponNode };
     this.modalRef = this.modalService.show(template);

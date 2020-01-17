@@ -19,7 +19,8 @@ module.exports = {
     searchQuery: searchQuery,
     fetchBlogsWithLimit: fetchBlogsWithLimit,
     fetchSingleBlog: fetchSingleBlog,
-    increaseBlogViews: increaseBlogViews
+    increaseBlogViews: increaseBlogViews,
+    fetchTopStoresName: fetchTopStoresName
 };
 
 function fetchSlides(req, res) {
@@ -44,6 +45,18 @@ function fetchSlides(req, res) {
 function fetchTopStores(req, res) {
     Store.
         find({}, 'img').
+        limit(Number(req.query.limitNo)).
+        exec(function (err, stores) {
+            if (err) res.json(resHandler.respondError(err[0], err[1] || -1));
+            else {
+                if (stores.length) res.json(resHandler.respondSuccess(stores, "Stores fetched successfully", 2));
+                else res.json(resHandler.respondError("Unable to fetch Stores at the moment", -3));
+            }
+        });
+}
+function fetchTopStoresName(req, res) {
+    Store.
+        find({}, 'name').
         limit(Number(req.query.limitNo)).
         exec(function (err, stores) {
             if (err) res.json(resHandler.respondError(err[0], err[1] || -1));

@@ -94,7 +94,8 @@
       </div>
     </div>
     <div class="clearfix"></div>
-    <h2 class="customHead text-uppercase">Shop online met korting met 10.000+ acties in
+    <h2 class="customHead text-uppercase">
+      Winkel Online met korting met 10.000+ acties in
       december 2019
       <br><b>Top</b> WINKELS</h2>
     <div class="row justify-content-between">
@@ -115,8 +116,9 @@
 </div>
 
 <div class="bgGradient">
-  <h2 class="customHead text-center text-uppercase">BLIJF ALTIJD UP-TO-DATE MET DE SUPERSAVERMAMA.NL NIEUWSBRIEF</h2>
-  <h3 class="customHead2 text-center text-uppercase">Koop de trending deals van vandaag en Save Big</h3>
+  <h2 class="customHead text-center text-uppercase">Schrijf u in door hier uw e-mailadres in te voeren
+  </h2>
+  <h3 class="customHead2 text-center text-uppercase">U ontvangt een melding op abonnement</h3>
   <br>
   <div class="input-set">
     <div class="col-md-8 col-xs-12 col-sm-12 mx-auto">
@@ -124,9 +126,16 @@
         <div class="search-bar-home searchjs col-xs-12 col-12">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control search" placeholder="Bespaar op winkels, merken en categorieën">
+            <input type="email" required email="true" [(ngModel)]="hero.subscribeBox" #subscribeBox="ngModel"
+              class="form-control search" placeholder="Bespaar op winkels, merken en categorieën">
             <span class="input-group-btn yBtn">
-              <button class="btn btn-lgg waves-effect waves-light" type="button">Zoeken</button>
+              <button class="btn btn-lgg waves-effect waves-light" type="button" [disabled]="subscribeBox.invalid"
+                (click)="subscribeMe(hero.subscribeBox)">
+                <div class="spinner-border text-dark" role="status" *ngIf="subscribeNode"
+                  style="width: 1.3rem; height: 1.3rem;">
+                  <span class="sr-only">Loading...</span>
+                </div> &nbsp; Zoeken
+              </button>
             </span> </div>
           <div class="clearfix"></div>
         </div>

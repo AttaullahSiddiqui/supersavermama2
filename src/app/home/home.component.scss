@@ -149,7 +149,7 @@ td{
     left:35% !important
 }
 .p_content{
-    font-size: 1.25em;
+    font-size: 1.4em;
     padding-top: 15px !important;
 }
 .bgGradient{
@@ -187,4 +187,7 @@ td{
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  
+  #copyfrom {
+    position: absolute;
+    left: -9999px;
+}
