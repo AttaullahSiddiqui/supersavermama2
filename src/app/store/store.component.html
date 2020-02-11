@@ -132,13 +132,15 @@
                     <h4>About this Store</h4>
                     <br>
                     <span [innerHTML]="longDes"></span>
+                    <br>
+                    <br>
                 </div>
             </div>
             <div class="row" *ngIf="switch">
                 <div class="col">
                     <div class="row mb-0">
                         <ng-container *ngFor="let store of storeArray | keyvalue">
-                            <div class="col-sm-6 col-lg-3" *ngIf="store.value._id != storeId">
+                            <div class="col-sm-6 col-lg-3 cursonPointer" *ngIf="store.value._id != storeId">
                                 <div class="brand-card" (click)="loadAnotherStore(store.value._id)">
                                     <div class="brand-card-header">
                                         <img src="{{store.value.img}}" class="rounded-circle roundImg" width="100"
